@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zimbabwe: Felt | Home</title>
+    <link rel="stylesheet" href="css/global.css">
+</head>
+<body>
+    <!-- Global Header -->
+    <header class="global-header">
+        <div style="pointer-events: auto;">
+            <span class="font-serif" style="font-size: 1.8rem; font-weight: 300; letter-spacing: 0.12em; color: rgba(255, 255, 255, 0.95); text-transform: none; text-shadow: 0 4px 12px rgba(0,0,0,0.4);">Zimbabwe</span>
+        </div>
+        <button class="audio-toggle" onclick="toggleZimMute()" id="audio-btn">
+            <span id="audio-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+            </span>
+        </button>
+    </header>
+
+    <div class="snap-container">
+        <!-- Section 1: Intro / Hero -->
+        <section class="section-full">
+            <img src="https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/Zimbabwe-tourism/Home-page/hero.jpg" alt="Zimbabwe Hero" class="bg-image">
+            <div class="overlay-dark" style="background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 100%);"></div>
+            <div class="cinematic-vignette"></div>
+            <div class="atmospheric-particle"></div>
+            <div class="section-content content-container">
+                <h1 class="title-main" style="font-size: clamp(3rem, 10vw, 6rem);">Discover the Soul</h1>
+                <p class="subtitle-emo" style="font-size: 1.1rem; max-width: 500px; margin: 0 auto 3rem auto; line-height: 2;">
+                    Each destination is a different emotional world. <br>
+                    Explore the rhythms, the stone, and the thunder.
+                </p>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem; opacity: 0.4;">
+                    <span class="font-display" style="font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.4em;">Scroll to Begin travel</span>
+                    <div style="width: 1px; height: 3rem; background: var(--color-gold);"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Victoria Falls -->
+        <section class="section-full">
+            <img src="https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/Zimbabwe-tourism/Home-page/victoria-falls.jpg" alt="Victoria Falls" class="bg-image">
+            <div class="overlay-dark"></div>
+            <div class="premium-gradient"></div>
+            <div class="falls-mist atmospheric-particle"></div>
+            <div class="section-content content-container">
+                <span class="label-gold">EXPLORE</span>
+                <h2 class="title-main">Victoria Falls</h2>
+                <p class="subtitle-emo">“The smoke that thunders.”</p>
+                <a href="pages/victoria-falls.html" class="btn-gold">Witness Authority</a>
+            </div>
+        </section>
+
+        <!-- Section 3: Great Zimbabwe -->
+        <section class="section-full">
+            <img src="https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/Zimbabwe-tourism/Home-page/Great-zimbabwe.jpg" alt="Great Zimbabwe" class="bg-image">
+            <div class="overlay-dark"></div>
+            <div class="premium-gradient"></div>
+            <div class="great-zim-dust atmospheric-particle"></div>
+            <div class="section-content content-container">
+                <span class="label-gold">HERITAGE</span>
+                <h2 class="title-main">Great Zimbabwe</h2>
+                <p class="subtitle-emo">“Stone remembers everything.”</p>
+                <a href="pages/great-zimbabwe.html" class="btn-gold">Enter Silence</a>
+            </div>
+        </section>
+
+        <!-- Section 4: Hwange -->
+        <section class="section-full">
+            <img src="https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/Zimbabwe-tourism/Home-page/Hwange.jpg" alt="Hwange" class="bg-image">
+            <div class="overlay-dark"></div>
+            <div class="premium-gradient"></div>
+            <div class="atmospheric-particle"></div>
+            <div class="section-content content-container">
+                <span class="label-gold">WILDLIFE</span>
+                <h2 class="title-main">Hwange</h2>
+                <p class="subtitle-emo">“Where the wild still breathes.”</p>
+                <a href="pages/hwange.html" class="btn-gold">Join the Rhythm</a>
+            </div>
+        </section>
+
+        <!-- Section 5: Nyanga -->
+        <section class="section-full">
+            <img src="https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/Zimbabwe-tourism/Home-page/nyanga.jpg" alt="Nyanga" class="bg-image">
+            <div class="overlay-dark"></div>
+            <div class="premium-gradient"></div>
+            <div class="nyanga-fog atmospheric-particle"></div>
+            <div class="section-content content-container">
+                <span class="label-gold">MOUNTAINS</span>
+                <h2 class="title-main">Nyanga</h2>
+                <p class="subtitle-emo">“Mist, silence, and sky.”</p>
+                <a href="pages/nyanga.html" class="btn-gold">Reach Peace</a>
+            </div>
+        </section>
+
+        <!-- Section 6: Harare -->
+        <section class="section-full">
+            <img src="https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/Zimbabwe-tourism/Home-page/harare.jpg" alt="Harare" class="bg-image">
+            <div class="overlay-dark"></div>
+            <div class="premium-gradient"></div>
+            <div class="harare-glow atmospheric-particle"></div>
+            <div class="section-content content-container">
+                <span class="label-gold">CITY LIFE</span>
+                <h2 class="title-main">Harare</h2>
+                <p class="subtitle-emo">“The pulse of modern Zimbabwe.”</p>
+                <a href="pages/harare.html" class="btn-gold">Feel the Energy</a>
+            </div>
+        </section>
+
+        <!-- Outro -->
+        <section class="section-full" style="height: 60vh; background-color: var(--color-charcoal); scroll-snap-align: end;">
+            <div class="section-content" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                <div style="width: 1px; height: 6rem; background: var(--color-gold); margin-bottom: 2rem; opacity: 0.5;"></div>
+                <h2 class="font-serif" style="font-style: italic; font-size: 2rem; margin-bottom: 1rem;">Journey Continued</h2>
+                <p class="font-display" style="font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.5em; opacity: 0.6;">Zimbabwe: Felt</p>
+                <p style="margin-top: 4rem; opacity: 0.3; font-style: italic; font-size: 0.75rem;">Premium T-Shirt Collection Experience</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="js/audio.js"></script>
+    <script src="js/scenes.js"></script>
+</body>
+</html>
