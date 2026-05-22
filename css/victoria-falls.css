@@ -1,0 +1,408 @@
+/* Victoria Falls Experience Styles */
+:root {
+    --falls-primary: #D4AF37;
+    --falls-mist: rgba(255, 255, 255, 0.15);
+}
+
+/* Immersive Hero Redesign */
+.hero-immersive {
+    height: 65vh !important;
+    min-height: 480px;
+    align-items: flex-end !important;
+    justify-content: flex-start !important;
+    padding: 0 0 8% 8% !important;
+    border-bottom: 1px dashed rgba(212, 175, 55, 0.15) !important;
+}
+
+/* Align Section 2 content to the top so that it peeks beautifully into the bottom of the landing fold */
+.falls-story-section {
+    align-items: flex-start !important;
+    padding-top: 12vh !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* Elegant scroll hint for downward visual flow */
+.scroll-hint-wrapper {
+    position: absolute;
+    bottom: 5%;
+    right: 8%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    z-index: 105;
+    pointer-events: none;
+    animation: fadeInOut 3s ease-in-out infinite alternate;
+}
+
+.scroll-hint-text {
+    font-family: var(--font-display);
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    color: var(--falls-primary);
+    opacity: 0.7;
+    text-transform: uppercase;
+}
+
+.scroll-hint-line {
+    width: 1px;
+    height: 35px;
+    background: linear-gradient(to bottom, var(--falls-primary), transparent);
+    position: relative;
+    overflow: hidden;
+}
+
+.scroll-hint-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    animation: scrollPulse 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@keyframes scrollPulse {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.hero-immersive .bg-image {
+    object-position: 70% 30%; /* Tighter, more environmental crop focal point */
+    transform: scale(1.1);
+}
+
+.editorial-content {
+    text-align: left !important;
+    max-width: 600px !important;
+    margin: 0 !important;
+}
+
+.editorial-content .title-main {
+    font-size: clamp(3rem, 10vw, 5.5rem) !important;
+    margin-bottom: 0.5rem !important;
+    text-shadow: 0 10px 50px rgba(0,0,0,0.9) !important;
+}
+
+.editorial-content .subtitle-emo {
+    margin-bottom: 0 !important;
+    opacity: 0.8;
+}
+
+/* Enhanced Atmospheric Layers */
+.mist-layer {
+    position: absolute;
+    inset: 0;
+    background: url('https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/Zimbabwe-tourism/Home-page/hero.jpg'); /* Using a light image as texture pattern */
+    background-size: cover;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    z-index: 6;
+    filter: blur(50px);
+    animation: mistFloat 40s linear infinite alternate;
+}
+
+@keyframes mistFloat {
+    0% { transform: translate(-5%, -5%) scale(1.1); }
+    100% { transform: translate(5%, 5%) scale(1.2); }
+}
+
+.falling-mist {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.05));
+    mask-image: linear-gradient(to bottom, transparent, black);
+    z-index: 7;
+    pointer-events: none;
+    animation: rainMist 10s linear infinite;
+}
+
+@keyframes rainMist {
+    0% { transform: translateY(-20%); opacity: 0; }
+    20% { opacity: 0.5; }
+    100% { transform: translateY(20%); opacity: 0; }
+}
+
+/* Horizontal Journey Slider - Upgraded to Cinematic Slideshow */
+.cinematic-slideshow {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    background: #000;
+}
+
+.slideshow-track {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 2s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+}
+
+.slide.is-active {
+    opacity: 1;
+    z-index: 2;
+}
+
+.slide-caption {
+    position: absolute;
+    bottom: 12%;
+    left: 8%;
+    z-index: 10;
+    padding-right: 8%;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.5s;
+}
+
+.slide.is-active .slide-caption {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.caption-line {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(1.2rem, 4vw, 2.2rem);
+    color: white;
+    text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    display: block;
+    line-height: 1.4;
+}
+
+.slide-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.1);
+    transition: transform 10s linear;
+}
+
+.slide.is-active .slide-bg {
+    transform: scale(1.2) translateY(2%);
+}
+
+.slideshow-nav {
+    position: absolute;
+    bottom: 3rem;
+    right: 3rem;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    transition: all 0.5s ease;
+}
+
+.nav-dot.is-active {
+    background: var(--falls-primary);
+    transform: scale(1.5);
+    box-shadow: 0 0 15px var(--falls-primary);
+}
+
+/* Slideshow Progress Bar */
+.slideshow-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 30;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: var(--falls-primary);
+    box-shadow: 0 0 10px var(--falls-primary);
+    transition: width 0.1s linear;
+}
+
+/* Oral Story Section */
+.oral-history-container {
+    padding: 8rem 2rem;
+    background: radial-gradient(circle at center, #111 0%, #000 100%);
+    text-align: center;
+}
+
+.story-circle {
+    width: 120px;
+    height: 120px;
+    border: 1px solid var(--falls-primary);
+    border-radius: 50%;
+    margin: 0 auto 3rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.5s ease;
+}
+
+.story-circle::before {
+    content: '';
+    position: absolute;
+    inset: -10px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 50%;
+    animation: pulse 3s linear infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.5; }
+    100% { transform: scale(1.4); opacity: 0; }
+}
+
+.story-circle:hover {
+    background: var(--falls-primary);
+    color: black;
+}
+
+/* Hidden Discovery */
+.discovery-section {
+    background: black;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.discovery-glow {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+}
+
+.discovery-text {
+    font-family: var(--font-display);
+    letter-spacing: 0.8em;
+    font-size: 0.6rem;
+    color: var(--falls-primary);
+    opacity: 0;
+    transition: opacity 2s ease;
+}
+
+.discovery-section.is-active .discovery-text {
+    opacity: 1;
+}
+
+.story-circle.is-playing {
+    background: var(--falls-primary);
+    color: black;
+    border-color: transparent;
+}
+
+.story-circle.is-playing::before {
+    animation: pulse 1s linear infinite;
+    border-width: 2px;
+}
+
+.story-circle.is-playing::after {
+    content: '';
+    position: absolute;
+    inset: -20px;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    border-radius: 50%;
+    animation: pulse 2s linear infinite 0.5s;
+}
+
+/* Discovery Markers & Facts */
+.discovery-marker {
+    position: absolute;
+    top: 30%;
+    right: 20%;
+    z-index: 25;
+    cursor: pointer;
+    opacity: 0.15;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.discovery-marker:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
+}
+
+.marker-icon {
+    width: 24px;
+    height: 24px;
+    border: 1px solid white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 14px;
+    backdrop-filter: blur(5px);
+    background: rgba(255,255,255,0.1);
+}
+
+.discovery-fact {
+    position: absolute;
+    top: 50%;
+    right: 15%;
+    max-width: 250px;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(15px);
+    border-left: 2px solid var(--falls-primary);
+    padding: 1.5rem;
+    color: white;
+    z-index: 26;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.discovery-marker.is-active + .discovery-fact {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) !important;
+}
+
+.fact-title {
+    font-family: var(--font-display);
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--falls-primary);
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+.fact-body {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .title-main { font-size: 3rem; }
+    .slide-content { left: 10%; bottom: 20%; }
+}

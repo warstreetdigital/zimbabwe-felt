@@ -1,0 +1,429 @@
+/* Nyanga Mist Experience Styles */
+:root {
+    --ny-blue: #A8BCC9;
+    --ny-dark: #080C0E;
+    --ny-mist: rgba(255, 255, 255, 0.2);
+    --ny-accent: #E0E7EB;
+}
+
+body {
+    background-color: var(--ny-dark);
+    margin: 0;
+    overflow: hidden;
+    color: white;
+    font-family: var(--font-sans);
+}
+
+.nyanga-container {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+/* Cinematic Visuals Layer */
+.visuals-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    background: var(--ny-dark);
+}
+
+.visual-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 10s cubic-bezier(0.25, 1, 0.4, 1);
+    filter: saturate(0.8) brightness(0.9);
+}
+
+.visual-image.active {
+    opacity: 0.7; /* Default fallback when not overridden by atmosphere status */
+}
+
+/* 4-way rotating organic cinematic motions that are ALWAYS in continuous motion with clearly visible, continuous room to breathe */
+.visual-image:nth-of-type(4n+1) {
+    animation: nyangaDriftOne 32s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite alternate both;
+}
+
+.visual-image:nth-of-type(4n+2) {
+    animation: nyangaDriftTwo 38s cubic-bezier(0.33, 0.46, 0.45, 0.95) infinite alternate both;
+}
+
+.visual-image:nth-of-type(4n+3) {
+    animation: nyangaDriftThree 34s cubic-bezier(0.25, 1, 0.5, 1) infinite alternate both;
+}
+
+.visual-image:nth-of-type(4n+4) {
+    animation: nyangaDriftFour 40s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate both;
+}
+
+@keyframes nyangaDriftOne {
+    0% {
+        transform: scale(1.05) translateY(0) translateX(0) rotate(0deg);
+    }
+    50% {
+        transform: scale(1.13) translateY(-3%) translateX(1.8%) rotate(0.4deg);
+    }
+    100% {
+        transform: scale(1.24) translateY(-6%) translateX(3.5%) rotate(0.9deg);
+    }
+}
+
+@keyframes nyangaDriftTwo {
+    0% {
+        transform: scale(1.26) translateY(-5%) translateX(-3%) rotate(-0.5deg);
+    }
+    50% {
+        transform: scale(1.12) translateY(-2%) translateX(-1.2%) rotate(-0.25deg);
+    }
+    100% {
+        transform: scale(1.03) translateY(0) translateX(0) rotate(0deg);
+    }
+}
+
+@keyframes nyangaDriftThree {
+    0% {
+        transform: scale(1.05) translateY(2%) translateX(-2%) rotate(-0.4deg);
+    }
+    50% {
+        transform: scale(1.15) translateY(-3%) translateX(1%) rotate(0.1deg);
+    }
+    100% {
+        transform: scale(1.25) translateY(-7%) translateX(3.2%) rotate(0.8deg);
+    }
+}
+
+@keyframes nyangaDriftFour {
+    0% {
+        transform: scale(1.25) translateY(-6%) translateX(3.5%) rotate(0.6deg);
+    }
+    50% {
+        transform: scale(1.11) translateY(-2.5%) translateX(-1%) rotate(-0.1deg);
+    }
+    100% {
+        transform: scale(1.02) translateY(0) translateX(-3%) rotate(-0.6deg);
+    }
+}
+
+/* Mist & Fog System */
+.mist-system {
+    position: fixed;
+    inset: 0;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.mist-layer {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, transparent 0%, var(--ny-dark) 140%);
+    opacity: 0.7;
+    z-index: 10;
+}
+
+/* Layered Fog Clouds */
+.fog-cloud {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background-image: radial-gradient(circle at center, rgba(255,255,255,0.08) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 8s ease;
+    z-index: 20;
+}
+
+.fog-1 { animation: fogDriftOne 120s linear infinite; }
+.fog-2 { animation: fogDriftTwo 150s linear infinite; background-image: radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, transparent 70%); }
+.fog-3 { animation: fogDriftThree 180s linear infinite; }
+
+@keyframes fogDriftOne {
+    0% { transform: translate(-10%, -10%) rotate(0deg); }
+    100% { transform: translate(10%, 10%) rotate(10deg); }
+}
+
+@keyframes fogDriftTwo {
+    0% { transform: translate(10%, -5%) rotate(0deg); }
+    100% { transform: translate(-10%, 15%) rotate(-5deg); }
+}
+
+@keyframes fogDriftThree {
+    0% { transform: translate(-5%, 20%) rotate(0deg); }
+    100% { transform: translate(5%, -20%) rotate(15deg); }
+}
+
+body.fog-active .fog-cloud, .fog-active .fog-cloud, .mist-heavy .fog-cloud, body.mist-heavy .fog-cloud {
+    opacity: 0.85;
+}
+
+.drifting-fog {
+    position: absolute;
+    inset: -100% -100%;
+    background-image: 
+        radial-gradient(ellipse at 50% 50%, rgba(255,255,255,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse at 20% 30%, rgba(255,255,255,0.04) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 10s ease;
+    animation: fogMove 100s ease-in-out infinite alternate;
+    z-index: 30;
+}
+
+@keyframes fogMove {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(5%, 5%) scale(1.1); }
+}
+
+.drifting-fog.visible {
+    opacity: 0.5;
+}
+
+/* Lighting Breath */
+.lighting-breath {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    pointer-events: none;
+    background: white;
+    opacity: 0;
+    mix-blend-mode: soft-light;
+    animation: lightingBreath 25s ease-in-out infinite;
+}
+
+@keyframes lightingBreath {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 0.08; }
+}
+
+/* Particle Layer */
+.particle-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 45;
+    pointer-events: none;
+    background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+    opacity: 0.03;
+    animation: particlesDrift 40s linear infinite;
+}
+
+@keyframes particlesDrift {
+    from { background-position: 0 0; }
+    to { background-position: 500px 1000px; }
+}
+
+/* Visibility Atmospheric States */
+body.mist-heavy .mist-layer {
+    opacity: 0.85;
+    background: radial-gradient(circle at center, transparent 15%, var(--ny-dark) 130%);
+    transition: opacity 10s cubic-bezier(0.25, 1, 0.4, 1);
+}
+body.mist-heavy .visual-image.active {
+    opacity: 0.45 !important;
+}
+
+body.mist-parting .mist-layer {
+    opacity: 0.40;
+    background: radial-gradient(circle at center, transparent 35%, var(--ny-dark) 125%);
+    transition: opacity 10s cubic-bezier(0.25, 1, 0.4, 1);
+}
+body.mist-parting .visual-image.active {
+    opacity: 0.85 !important;
+}
+
+body.mist-total .mist-layer {
+    opacity: 1;
+    background: #e6ebf0; /* Soft total white-out mist envelope at the end */
+    transition: opacity 12s cubic-bezier(0.25, 1, 0.4, 1);
+}
+body.mist-total .visual-image {
+    opacity: 0 !important;
+    transition: opacity 12s cubic-bezier(0.25, 1, 0.4, 1);
+}
+
+/* Gateway Button - "VIEW NYANGA TODAY" */
+.nyanga-today-gateway {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 80;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 4s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: center;
+}
+
+.nyanga-today-gateway.visible {
+    opacity: 0.6;
+    pointer-events: auto;
+    animation: gatewayDrift 15s ease-in-out infinite alternate;
+}
+
+@keyframes gatewayDrift {
+    0% { transform: translate(-52%, -48%); }
+    100% { transform: translate(-48%, -52%); }
+}
+
+.gateway-btn {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--ny-accent);
+    padding: 1rem 2.5rem;
+    font-family: var(--font-display);
+    font-size: 0.65rem;
+    letter-spacing: 0.6em;
+    cursor: pointer;
+    backdrop-filter: blur(15px);
+    transition: all 1s ease;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 0 30px rgba(0,0,0,0.2);
+}
+
+.gateway-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.3);
+    letter-spacing: 0.8em;
+    opacity: 1;
+}
+
+/* Page Transition Overlay */
+.transition-fog {
+    position: fixed;
+    inset: 0;
+    background: #fff;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 3s ease;
+}
+
+.transition-fog.active {
+    opacity: 1;
+}
+.nyanga-intro {
+    position: relative;
+    z-index: 20;
+    text-align: center;
+    transition: opacity 3s ease, transform 3s ease;
+}
+
+.nyanga-intro.fade-out {
+    opacity: 0;
+    transform: scale(0.95);
+    pointer-events: none;
+}
+
+.nyanga-intro h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 10vw, 4rem);
+    letter-spacing: clamp(0.5em, 5vw, 1.2em);
+    margin: 0;
+    color: var(--ny-accent);
+    text-shadow: 0 0 50px rgba(168, 188, 201, 0.4);
+    line-height: 1.2;
+}
+
+.nyanga-intro p {
+    font-family: var(--font-serif);
+    font-style: italic;
+    opacity: 0.35;
+    margin-top: 1.5rem;
+    letter-spacing: 0.4em;
+    font-size: clamp(0.7rem, 2vw, 0.9rem);
+    padding: 0 10vw;
+}
+
+.enter-mist-btn {
+    margin-top: 4rem;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--ny-accent);
+    padding: 1.25rem 3.5rem;
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    letter-spacing: 0.5em;
+    cursor: pointer;
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    backdrop-filter: blur(5px);
+}
+
+.enter-mist-btn:hover {
+    border-color: var(--ny-accent);
+    letter-spacing: 0.7em;
+    background: rgba(255,255,255,0.03);
+}
+
+.enter-mist-btn.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Experience UI */
+.ny-controls {
+    position: fixed;
+    bottom: 4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 30;
+    opacity: 0;
+    transition: opacity 3s ease;
+    text-align: center;
+    pointer-events: none;
+}
+
+.ny-controls.visible {
+    opacity: 1;
+}
+
+.ny-progress-container {
+    width: 150px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 0 auto;
+    position: relative;
+}
+
+.ny-progress-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: var(--ny-accent);
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+/* Atmosphere Overlays */
+.drifting-fog::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('https://www.transparenttextures.com/patterns/p6.png');
+    opacity: 0.1;
+    mix-blend-mode: overlay;
+}
+.grain-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 90;
+    pointer-events: none;
+    background: url('https://www.transparenttextures.com/patterns/p6.png');
+    opacity: 0.03;
+    mix-blend-mode: overlay;
+}
+
+.vignette {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: radial-gradient(circle at center, transparent 0%, #000 150%);
+    pointer-events: none;
+}

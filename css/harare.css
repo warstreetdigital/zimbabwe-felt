@@ -1,0 +1,860 @@
+/* Harare Urban Pulse Experience */
+:root {
+    --hr-blue: #1A1E23;
+    --hr-gold: #C5A059;
+    --hr-red: #D43F3F; /* Light trail red */
+    --hr-yellow: #FFD700; /* City lights */
+    --hr-dark: #120512; /* Richer, cleaner deep purple-black */
+    --hr-pulse: #2a081a; /* Clean cinematic maroon */
+    --hr-maroon: #4a0e2e;
+    --hr-gold: #c5a059;
+    --font-hr: "Inter", sans-serif;
+}
+
+body {
+    background-color: var(--hr-dark);
+    margin: 0;
+    overflow: hidden;
+    color: white;
+    font-family: var(--font-hr);
+}
+
+.harare-system {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+    background: linear-gradient(180deg, var(--hr-dark) 0%, var(--hr-pulse) 100%);
+}
+
+/* Cinematic Urban Background */
+.city-canvas {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: var(--hr-dark);
+}
+
+/* Light & Reflection System */
+.urban-lights {
+    display: none; /* Removed for cleaner look */
+}
+
+/* Neon Sweep Effect */
+.neon-sweep {
+    display: none; /* Removed for cleaner look */
+}
+
+.reflection-overlay {
+    display: none;
+}
+
+@keyframes reflectionFloat {
+    0% { transform: scale(1); opacity: 0.5; }
+    100% { transform: scale(1.1); opacity: 0.8; }
+}
+
+/* UI Structure */
+.harare-content {
+    position: relative;
+    z-index: 20;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 6rem 10vw;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.harare-content::-webkit-scrollbar { display: none; }
+
+.harare-intro {
+    margin-top: 10vh;
+    transition: opacity 2s ease, transform 2s ease;
+}
+
+.harare-intro.fade-out {
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+}
+
+.harare-intro h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 6vw, 4rem);
+    letter-spacing: 0.2rem;
+    margin: 0;
+    color: var(--hr-gold);
+    text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    line-height: 1.1;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.harare-intro p {
+    font-family: var(--font-serif);
+    font-style: italic;
+    opacity: 0.7;
+    margin-top: 1.5rem;
+    letter-spacing: 0.2em;
+    font-size: 1.1rem;
+    color: white;
+}
+
+/* Level 1: Destinations Grid */
+.destination-grid {
+    margin-top: 12vh;
+    display: flex;
+    flex-direction: column;
+    gap: 8vh;
+    padding-bottom: 25vh;
+}
+
+.destination-card {
+    position: relative;
+    height: 65vh; /* Secondary card fallback size */
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    background: #000;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Premium Primary Hero Card - Long Live Harare */
+.hero-card {
+    height: 82vh !important;
+    border: 1px solid rgba(197, 160, 89, 0.25) !important;
+    box-shadow: 0 25px 60px rgba(197, 160, 89, 0.12) !important;
+}
+
+.hero-card:hover {
+    border-color: rgba(197, 160, 89, 0.8) !important;
+    box-shadow: 0 35px 80px rgba(197, 160, 89, 0.25) !important;
+    transform: translateY(-8px) scale(1.005) !important;
+}
+
+/* Locked atmospheric card elements */
+.locked-card {
+    height: 58vh !important;
+    opacity: 0.72;
+    transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.locked-card:hover {
+    opacity: 0.95;
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+}
+
+.destination-card:hover {
+    border-color: rgba(197, 160, 89, 0.6);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    transform: translateY(-5px);
+}
+
+.destination-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg, 
+        transparent 0%, 
+        transparent 40%, 
+        rgba(255, 255, 255, 0.05) 50%, 
+        transparent 60%, 
+        transparent 100%
+    );
+    transform: translateX(-100%);
+    transition: transform 1.2s ease;
+    z-index: 6;
+    pointer-events: none;
+}
+
+.destination-card:hover::after {
+    transform: translateX(100%);
+}
+
+.portal-label {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    color: var(--hr-gold);
+    letter-spacing: 0.2rem;
+    display: block;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    text-shadow: 0 0 10px rgba(197, 160, 89, 0.4);
+}
+
+.dest-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.9;
+    transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+    filter: saturate(1) brightness(1);
+}
+
+.destination-card:hover .dest-bg {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.dest-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%);
+    z-index: 2;
+    transition: all 0.8s ease;
+}
+
+.destination-card:hover .dest-overlay {
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, transparent 80%);
+}
+
+.dest-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 3rem;
+    z-index: 5;
+}
+
+.dest-content h3 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    color: white;
+    letter-spacing: 0.15rem;
+    margin-bottom: 1.2rem;
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    text-shadow: 0 5px 20px rgba(0,0,0,0.8);
+    font-weight: 500;
+    line-height: 1.1;
+}
+
+.destination-card:hover h3 {
+    letter-spacing: 0.2rem;
+    transform: translateY(-5px);
+    color: var(--hr-gold);
+}
+
+.dest-content p {
+    font-family: var(--font-serif);
+    font-style: italic;
+    opacity: 0.8;
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+    letter-spacing: 0.1em;
+    transition: all 0.8s ease;
+    color: white;
+    margin-bottom: 2.5rem;
+}
+
+/* Enter Harare Button */
+.portal-action-btn {
+    display: inline-block;
+    padding: 1rem 3rem;
+    background: transparent;
+    border: 1px solid var(--hr-gold);
+    color: var(--hr-gold);
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(197, 160, 89, 0);
+    border-radius: 4px;
+}
+
+.destination-card:hover .portal-action-btn {
+    background: var(--hr-gold);
+    color: black;
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(197, 160, 89, 0.2);
+}
+
+.destination-card:hover p {
+    opacity: 0.8;
+}
+
+/* Neon Glow for Long Live Card */
+.neon-card {
+    border: 1px solid rgba(212, 63, 63, 0.2);
+}
+
+.neon-card:hover {
+    border-color: rgba(212, 63, 63, 0.8);
+    box-shadow: 0 30px 60px rgba(212, 63, 63, 0.15);
+}
+
+/* Custom Cinematic Effects for Hero and Locked Cards */
+.dest-overlay-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 100%, rgba(197, 160, 89, 0.18) 0%, transparent 60%);
+    z-index: 3;
+    pointer-events: none;
+    mix-blend-mode: color-dodge;
+    opacity: 0.8;
+    transition: opacity 0.8s ease;
+}
+
+.hero-card:hover .dest-overlay-glow {
+    opacity: 1;
+}
+
+.premium-label {
+    background: rgba(197, 160, 89, 0.1) !important;
+    padding: 0.35rem 0.9rem !important;
+    border-radius: 100px !important;
+    display: inline-block !important;
+    border: 1px solid rgba(197, 160, 89, 0.2) !important;
+    font-weight: 600 !important;
+}
+
+.pulse-glow {
+    animation: ambientButtonGlow 3s infinite alternate;
+}
+
+@keyframes ambientButtonGlow {
+    0% {
+        box-shadow: 0 0 10px rgba(197, 160, 89, 0.12);
+        border-color: rgba(197, 160, 89, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 25px rgba(197, 160, 89, 0.35);
+        border-color: rgba(197, 160, 89, 1);
+    }
+}
+
+/* Locked Card Visual Indicators */
+.locked-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 1.25rem;
+    font-size: 0.7rem;
+    font-family: var(--font-display);
+    letter-spacing: 0.18em;
+    color: var(--hr-gold);
+    opacity: 0.8;
+}
+
+.indicator-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--hr-gold);
+    animation: pulseAmbient 2.5s infinite alternate;
+}
+
+@keyframes pulseAmbient {
+    0% { opacity: 0.35; transform: scale(0.95); }
+    100% { opacity: 1; transform: scale(1.2); }
+}
+
+.indicator-text {
+    text-transform: uppercase;
+}
+
+/* Cinematic Locked Feedback Overlay Styling */
+.locked-feedback-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: rgba(10, 3, 10, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.locked-feedback-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.feedback-card {
+    position: relative;
+    width: 90%;
+    max-width: 520px;
+    background: rgba(18, 5, 22, 0.94);
+    border: 1px solid rgba(197, 160, 89, 0.2);
+    border-radius: 6px;
+    padding: 3.5rem 2.5rem;
+    box-shadow: 0 35px 70px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(197, 160, 89, 0.03);
+    overflow: hidden;
+    transform: scale(0.94) translateY(15px);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.locked-feedback-overlay.active .feedback-card {
+    transform: scale(1) translateY(0);
+}
+
+.feedback-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(197, 160, 89, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.close-feedback {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: transparent;
+    border: none;
+    color: white;
+    opacity: 0.4;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.4s ease;
+    z-index: 10;
+    outline: none;
+}
+
+.close-feedback:hover {
+    opacity: 1;
+}
+
+.feedback-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.feedback-category {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    color: var(--hr-gold);
+    letter-spacing: 0.3em;
+    display: block;
+    margin-bottom: 1.25rem;
+    opacity: 0.8;
+}
+
+.feedback-title {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    line-height: 1.4;
+    margin: 0 0 1rem 0;
+    color: white;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+.feedback-message {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0 0 2rem 0;
+    letter-spacing: 0.04em;
+}
+
+.feedback-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+
+.spinner-line {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--hr-gold), transparent);
+    animation: pulseSpinner 2s infinite ease-in-out;
+}
+
+@keyframes pulseSpinner {
+    0% { transform: scaleX(0.5); opacity: 0.3; }
+    50% { transform: scaleX(1.8); opacity: 0.95; }
+    100% { transform: scaleX(0.5); opacity: 0.3; }
+}
+
+/* Level 2: Stories Archive */
+.stories-archive {
+    position: relative;
+    z-index: 30;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.back-to-destinations {
+    background: transparent;
+    border: none;
+    color: white;
+    font-family: var(--font-display);
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    cursor: pointer;
+    margin-bottom: 4rem;
+    opacity: 0.4;
+    transition: opacity 0.5s ease;
+}
+
+.back-to-destinations:hover { opacity: 1; }
+
+.stories-vertical-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 10vh;
+    padding-bottom: 20vh;
+}
+
+.cinematic-story-card {
+    position: relative;
+    height: 75vh;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #000;
+    display: flex;
+    align-items: flex-end;
+    padding: 3rem;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.story-card-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.9;
+    transition: transform 4s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.5s ease;
+    filter: saturate(1) contrast(1);
+}
+
+.cinematic-story-card.active .story-card-bg {
+    transform: scale(1.03);
+    opacity: 1;
+}
+
+.story-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%);
+    z-index: 2;
+}
+
+.story-card-content {
+    position: relative;
+    z-index: 5;
+    max-width: 600px;
+    transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cinematic-story-card.active .story-card-content {
+    transform: translateY(-20px);
+}
+
+.story-label {
+    font-family: var(--font-display);
+    font-size: 0.6rem;
+    color: var(--hr-gold);
+    letter-spacing: 0.6em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 1.5rem;
+    opacity: 0.6;
+}
+
+.story-card-content h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 4.5vw, 2.5rem);
+    color: white;
+    letter-spacing: 0.15rem; /* Safer spacing */
+    margin-bottom: 1rem;
+    line-height: 1.3;
+    text-transform: uppercase;
+    overflow-wrap: break-word;
+}
+
+.story-card-content p {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.1rem;
+    opacity: 0.5;
+    margin-bottom: 3rem;
+    letter-spacing: 0.1em;
+}
+
+.play-memory-btn {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: white;
+    padding: 1.2rem 2rem;
+    font-family: var(--font-display);
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    cursor: pointer;
+    transition: all 0.8s ease;
+    border-radius: 2px;
+}
+
+.play-memory-btn:hover {
+    background: var(--hr-gold);
+    border-color: var(--hr-gold);
+    color: black;
+    letter-spacing: 0.6em;
+}
+
+.cinematic-story-card.active .play-memory-btn {
+    background: var(--hr-gold);
+    border-color: var(--hr-gold);
+    color: black;
+    box-shadow: 0 0 40px rgba(197, 160, 89, 0.3);
+}
+
+/* Story Overlay Overhaul */
+.story-overlay {
+    background: rgba(26, 10, 26, 0.98) !important;
+}
+
+.close-story {
+    background: rgba(255,255,255,0.1) !important;
+    padding: 1rem 2rem !important;
+    border-radius: 2px !important;
+}
+
+/* Art Gallery Experience */
+.gallery-experience {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: var(--hr-dark);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 2s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    padding: 8vh 10vw;
+    overflow-y: auto;
+}
+
+.gallery-experience.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.gallery-header {
+    text-align: center;
+    margin-bottom: 10vh;
+}
+
+.gallery-header h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.2rem, 4vw, 2.2rem);
+    letter-spacing: 0.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--hr-gold);
+    text-transform: uppercase;
+}
+
+.gallery-header p {
+    font-family: var(--font-serif);
+    font-style: italic;
+    opacity: 0.5;
+    letter-spacing: 0.2em;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 4rem;
+    align-items: start;
+}
+
+.art-piece {
+    position: relative;
+    animation: galleryFloat 20s ease-in-out infinite alternate;
+    animation-delay: calc(var(--drift) * 2s);
+}
+
+@keyframes galleryFloat {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(20px); }
+}
+
+.art-frame {
+    width: 100%;
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: var(--hr-dark);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.art-piece:hover .art-frame {
+    transform: scale(1.02);
+    border-color: var(--hr-gold);
+}
+
+.art-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.85;
+    transition: all 1.5s ease;
+    filter: contrast(1.1);
+}
+
+.art-piece:hover .art-frame img {
+    opacity: 1;
+}
+
+.art-info {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.art-info h3 {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    letter-spacing: 0.5em;
+    color: var(--hr-gold);
+    margin-bottom: 0.5rem;
+}
+
+.art-info span {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 0.8rem;
+    opacity: 0.3;
+}
+
+.close-gallery {
+    position: absolute;
+    top: 4rem;
+    right: 5vw;
+    background: transparent;
+    border: none;
+    color: white;
+    font-family: var(--font-display);
+    font-size: 0.6rem;
+    letter-spacing: 0.5em;
+    cursor: pointer;
+    opacity: 0.4;
+    transition: opacity 0.5s ease;
+    z-index: 210;
+}
+
+.close-gallery:hover { opacity: 1; }
+
+/* Extended City Link */
+.harare-extension {
+    margin-top: 15vh;
+    padding-bottom: 10vh;
+    opacity: 0.4;
+    transition: opacity 1s ease;
+}
+
+.harare-extension:hover {
+    opacity: 1;
+}
+
+.extension-link {
+    color: white;
+    text-decoration: none;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    font-family: var(--font-display);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 0.5rem;
+}
+
+/* Active Story Layer */
+.story-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: var(--hr-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10vw;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.story-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.story-content {
+    max-width: 600px;
+    text-align: center;
+}
+
+.story-content h2 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--hr-gold);
+    letter-spacing: 0.3em;
+    margin-bottom: 3rem;
+}
+
+.story-content p {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    line-height: 1.8;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+.close-story {
+    position: absolute;
+    top: 4rem;
+    right: 10vw;
+    background: transparent;
+    border: none;
+    color: white;
+    font-family: var(--font-display);
+    font-size: 0.6rem;
+    letter-spacing: 0.4em;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.5s ease;
+}
+
+.close-story:hover {
+    opacity: 1;
+}
+
+/* Atmosphere Elements */
+.dust-overlay {
+    display: none; /* Removed for cleaner look */
+}
+
+.vignette {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at center, transparent 60%, rgba(18, 5, 18, 0.3) 150%);
+    z-index: 15;
+    pointer-events: none;
+}
+
+/* Film Grain Overlay */
+.harare-system::after {
+    display: none; /* Removed for cleaner look */
+}

@@ -1,0 +1,366 @@
+/* Great Zimbabwe Sacred Atmosphere Styles */
+:root {
+    --gz-primary: #D4AF37;       /* Royal Gold */
+    --gz-secondary: #0A0A08;     /* Granite Charcoal */
+    --gz-accent: #E5C158;        /* Soft sunlight on granite */
+    --font-serif: "Playfair Display", serif;
+    --font-display: "Space Grotesk", sans-serif;
+}
+
+body {
+    background-color: var(--gz-secondary);
+    margin: 0;
+    overflow: hidden;
+    color: white;
+    font-family: var(--font-display);
+}
+
+.great-zimbabwe-system {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+    background: #000;
+}
+
+/* Atmospheric Layered Backgrounds */
+.gz-bg-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.gz-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 12s cubic-bezier(0.25, 1, 0.4, 1);
+    filter: saturate(0.55) contrast(1.1) brightness(0.72) sepia(0.22);
+}
+
+.gz-image.active {
+    opacity: 0.82;
+}
+
+/* 4 Unique Continuous Cinematic Drifts (Never Stop) */
+.gz-image:nth-of-type(4n+1) {
+    animation: gzDriftOne 32s cubic-bezier(0.2, 0.4, 0.3, 0.9) infinite alternate both;
+}
+
+.gz-image:nth-of-type(4n+2) {
+    animation: gzDriftTwo 36s cubic-bezier(0.2, 0.4, 0.3, 0.9) infinite alternate both;
+}
+
+.gz-image:nth-of-type(4n+3) {
+    animation: gzDriftThree 30s cubic-bezier(0.2, 0.4, 0.3, 0.9) infinite alternate both;
+}
+
+.gz-image:nth-of-type(4n+4) {
+    animation: gzDriftFour 40s cubic-bezier(0.2, 0.4, 0.3, 0.9) infinite alternate both;
+}
+
+@keyframes gzDriftOne {
+    0% { transform: scale(1.05) translate(0, 0) rotate(0deg); }
+    100% { transform: scale(1.2) translate(1.5%, -1.5%) rotate(0.5deg); }
+}
+
+@keyframes gzDriftTwo {
+    0% { transform: scale(1.22) translate(-2%, 1%) rotate(-0.3deg); }
+    100% { transform: scale(1.04) translate(0.5%, -0.5%) rotate(0.2deg); }
+}
+
+@keyframes gzDriftThree {
+    0% { transform: scale(1.03) translate(-1%, -1.5%) rotate(-0.4deg); }
+    100% { transform: scale(1.18) translate(1.2%, 1%) rotate(0.3deg); }
+}
+
+@keyframes gzDriftFour {
+    0% { transform: scale(1.24) translate(1.5%, 1.5%) rotate(0.4deg); }
+    100% { transform: scale(1.02) translate(-1%, -1%) rotate(-0.3deg); }
+}
+
+/* Moving Shadows Overlays: Golden Sacred Hour */
+.moving-shadow-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(135deg, rgba(4, 2, 1, 0) 25%, rgba(0, 0, 0, 0.72) 75%);
+    mix-blend-mode: multiply;
+    animation: shadowPulse 24s ease-in-out infinite alternate;
+}
+
+@keyframes shadowPulse {
+    0% { opacity: 0.65; transform: scale(1); }
+    100% { opacity: 0.92; transform: scale(1.06) rotate(1deg); }
+}
+
+/* Firelight Flicker Overlay */
+.firelight-flicker-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    background: radial-gradient(circle at 50% 90%, rgba(212, 137, 30, 0.12) 0%, rgba(255, 85, 0, 0.03) 45%, transparent 75%);
+    mix-blend-mode: screen;
+    animation: subtleFirelight 8s infinite alternate cubic-bezier(0.45, 0.05, 0.55, 0.95);
+}
+
+@keyframes subtleFirelight {
+    0% {
+        opacity: 0.6;
+        transform: scale(1) translateY(0);
+    }
+    25% {
+        opacity: 0.95;
+        transform: scale(1.04) translateY(-0.8%);
+    }
+    55% {
+        opacity: 0.55;
+        transform: scale(0.97) translateY(0.4%);
+    }
+    75% {
+        opacity: 0.85;
+        transform: scale(1.02) translateY(-0.3%);
+    }
+    100% {
+        opacity: 0.7;
+        transform: scale(1.05) translateY(-0.6%);
+    }
+}
+
+/* Floating Ritual Smoke layers (Barely moving, extremely subtle) */
+.smoke-layer {
+    position: fixed;
+    top: -20%;
+    left: -10%;
+    width: 120%;
+    height: 60%;
+    z-index: 4;
+    pointer-events: none;
+    opacity: 0.12;
+    background: radial-gradient(ellipse at top, rgba(235, 220, 190, 0.15) 0%, rgba(4, 2, 1, 0) 70%);
+    filter: blur(45px);
+    animation: ritualSmoke 40s infinite ease-in-out alternate;
+}
+
+.smoke-layer-2 {
+    position: fixed;
+    top: -15%;
+    right: -15%;
+    width: 130%;
+    height: 55%;
+    z-index: 4;
+    pointer-events: none;
+    opacity: 0.08;
+    background: radial-gradient(ellipse at top right, rgba(212, 175, 55, 0.1) 0%, rgba(4, 2, 1, 0) 75%);
+    filter: blur(55px);
+    animation: ritualSmokeDouble 34s infinite ease-in-out alternate-reverse;
+}
+
+@keyframes ritualSmoke {
+    0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+        filter: blur(40px);
+    }
+    50% {
+        transform: translate(1.5%, 3%) scale(1.08) rotate(2deg);
+        filter: blur(50px);
+    }
+    100% {
+        transform: translate(-1%, 1.5%) scale(0.96) rotate(-1.5deg);
+        filter: blur(45px);
+    }
+}
+
+@keyframes ritualSmokeDouble {
+    0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+    50% {
+        transform: translate(-2%, 1.5%) scale(1.04) rotate(-3deg);
+    }
+    100% {
+        transform: translate(1%, -1%) scale(0.97) rotate(1.5deg);
+    }
+}
+
+/* Cinematic Fire Embers at lower screen regions */
+.ember-container {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 45vh;
+    z-index: 4;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.ember {
+    position: absolute;
+    background: radial-gradient(circle, #ffb855 35%, rgba(212, 175, 55, 0.8) 75%, transparent 100%);
+    border-radius: 50%;
+    opacity: 0;
+    box-shadow: 0 0 12px rgba(255, 110, 0, 0.7), 0 0 4px rgba(255, 200, 50, 0.8);
+    animation: driftUpward 15s linear infinite;
+}
+
+@keyframes driftUpward {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.75;
+    }
+    50% {
+        opacity: 0.5;
+        transform: translateY(-22vh) translateX(var(--sway-amount));
+    }
+    85% {
+        opacity: 0.2;
+    }
+    100% {
+        transform: translateY(-48vh) translateX(calc(var(--sway-amount) * 1.6));
+        opacity: 0;
+    }
+}
+
+/* Atmospheric Overlays */
+.overlay-texture {
+    position: fixed;
+    inset: 0;
+    z-index: 5;
+    pointer-events: none;
+    background: radial-gradient(circle at center, transparent 15%, rgba(4, 2, 1, 0.95) 100%);
+    opacity: 0.85;
+}
+
+.dust-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 6;
+    pointer-events: none;
+    background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+}
+
+/* Start Button */
+.inzwa-ngano-btn {
+    position: relative;
+    z-index: 20;
+    background: transparent;
+    border: 1px solid var(--gz-primary);
+    color: var(--gz-primary);
+    padding: 1.5rem 4rem;
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    letter-spacing: 0.5em;
+    cursor: pointer;
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+}
+
+.inzwa-ngano-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gz-primary);
+    transform: translateX(-100%);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: -1;
+}
+
+.inzwa-ngano-btn:hover {
+    color: black;
+}
+
+.inzwa-ngano-btn:hover::before {
+    transform: translateX(0);
+}
+
+.inzwa-ngano-btn.fade-out {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+}
+
+/* Ngano UI */
+.ngano-controls {
+    position: fixed;
+    bottom: 4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 30;
+    opacity: 0;
+    transition: opacity 2s ease;
+    text-align: center;
+}
+
+.ngano-controls.visible {
+    opacity: 1;
+}
+
+.ngano-title {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--gz-primary);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.ngano-progress-container {
+    width: 200px;
+    height: 1px;
+    background: rgba(212, 175, 55, 0.2);
+    margin: 0 auto;
+    position: relative;
+}
+
+.ngano-progress-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: var(--gz-primary);
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+.ngano-subtitles {
+    position: fixed;
+    bottom: 8rem;
+    left: 10%;
+    right: 10%;
+    text-align: center;
+    font-family: var(--font-serif);
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    font-style: italic;
+    color: white;
+    opacity: 0;
+    transition: opacity 1s ease;
+    z-index: 40;
+    pointer-events: none;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.9);
+}
+
+.ngano-subtitles.visible {
+    opacity: 0.8;
+}
+
+/* Scene Transitions */
+.scene-vignette {
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    background: radial-gradient(circle at center, transparent 0%, #000 120%);
+    pointer-events: none;
+}
