@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harare | Zimbabwe: Felt</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/harare.css">
+</head>
+<body>
+    <!-- Persistent Back Nav -->
+    <a href="../home.html" class="back-nav" style="position: fixed; top: 2rem; left: 2rem; z-index: 1000; display: flex; align-items: center; gap: 1rem; text-decoration: none; color: white;">
+        <div style="width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.4);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        </div>
+    </a>
+
+    <!-- Global Header for Audio UI -->
+    <header class="global-header" style="justify-content: flex-end; position: fixed; top: 0; left: 0; right: 0; z-index: 1000;">
+        <button class="audio-toggle" onclick="toggleZimMute()" id="audio-btn">
+            <span id="audio-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></span>
+        </button>
+    </header>
+
+    <div class="harare-system">
+        <!-- City Canvas -->
+        <div class="city-canvas">
+        </div>
+
+        <!-- Atmospheric Overlays -->
+        <div class="urban-lights"></div>
+        <div class="reflection-overlay"></div>
+        <div class="dust-overlay"></div>
+        <div class="vignette"></div>
+
+        <!-- Content Structure -->
+        <main class="harare-content" id="harare-main">
+            <!-- Level 1: Destinations -->
+            <div class="harare-destinations" id="destinations-view">
+                <div class="harare-intro">
+                    <h1>HARARE</h1>
+                    <p>“The city remembers.”</p>
+                </div>
+
+                <div class="destination-grid">
+                    <!-- Portal 01: Long Live Harare (HERO / PRIMARY) -->
+                    <a href="https://longliveharare.pages.dev/" target="_blank" class="destination-card hero-card neon-card">
+                        <div class="dest-bg" style="background-image: url('https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/Zimbabwe-tourism/Harare/Enter_Harare_Cover_Optimized.webp');"></div>
+                        <div class="dest-overlay-glow"></div>
+                        <div class="dest-overlay"></div>
+                        <div class="dest-content">
+                            <span class="portal-label premium-label">PORTAL 01 — THE LIVING PULSE</span>
+                            <h3>LONG LIVE HARARE</h3>
+                            <p>“The city is still breathing.”</p>
+                            <div class="portal-action-btn pulse-glow">ENTER HARARE</div>
+                        </div>
+                    </a>
+
+                    <!-- Portal 02: Stories Destination (LOCKED) -->
+                    <div class="destination-card locked-card" id="stories-trigger">
+                        <div class="dest-bg" style="background-image: url('https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/Zimbabwe-tourism/Harare/Stories_About_Harare_Cover.webp');"></div>
+                        <div class="dest-overlay"></div>
+                        <div class="dest-content">
+                            <span class="portal-label">PORTAL 02 — RESTORING</span>
+                            <h3>HARARE STORIES</h3>
+                            <p>The city's memory archive.</p>
+                            <div class="locked-indicator">
+                                <span class="indicator-dot"></span>
+                                <span class="indicator-text">Gathering Memories</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Portal 03: Art Gallery Destination (LOCKED) -->
+                    <div class="destination-card locked-card" id="gallery-trigger">
+                        <div class="dest-bg" style="background-image: url('https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/Zimbabwe-tourism/Harare/Harare_Art_Gallery_Cover.webp');"></div>
+                        <div class="dest-overlay"></div>
+                        <div class="dest-content">
+                            <span class="portal-label">PORTAL 03 — EVOLVING</span>
+                            <h3>HARARE ART GALLERY</h3>
+                            <p>“Some memories deserve walls.”</p>
+                            <div class="locked-indicator">
+                                <span class="indicator-dot"></span>
+                                <span class="indicator-text">Preparing Canvases</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level 2: Stories Archive (Initially Hidden) -->
+            <div class="stories-archive" id="stories-view" style="display: none;">
+                <button class="back-to-destinations">&larr; BACK TO THE CITY</button>
+                <div class="stories-vertical-stack">
+                    <!-- Story Card 01 -->
+                    <div class="cinematic-story-card" data-story="before-the-lights">
+                        <div class="story-card-bg" style="background-image: url('https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/Zimbabwe-tourism/Harare/Stories_About_Harare_Cover.webp');"></div>
+                        <div class="story-card-overlay"></div>
+                        <div class="story-card-content">
+                            <span class="story-label">Memory Archive 01</span>
+                            <h2>BEFORE MEIKLES BECAME MEIKLES…</h2>
+                            <p>“What stood here before the city learned luxury?”</p>
+                            <button class="play-memory-btn">▶ LISTEN TO MEMORY</button>
+                        </div>
+                    </div>
+
+                    <!-- Story Card 02 -->
+                    <div class="cinematic-story-card" data-story="city-kept-building">
+                        <div class="story-card-bg" style="background-image: url('https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/Zimbabwe-tourism/Harare/Enter_Harare_Cover_Optimized.webp');"></div>
+                        <div class="story-card-overlay"></div>
+                        <div class="story-card-content">
+                            <span class="story-label">Memory Archive 02</span>
+                            <h2>BEFORE THE GLASS TOWERS…</h2>
+                            <p>“This city was already dreaming upward.”</p>
+                            <button class="play-memory-btn">▶ HEAR THE CITY RISE</button>
+                        </div>
+                    </div>
+
+                    <!-- Story Card 03 -->
+                    <div class="cinematic-story-card" data-story="after-dark">
+                        <div class="story-card-bg" style="background-image: url('https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/Zimbabwe-tourism/Harare/Enter_Harare_Cover_Optimized.webp');"></div>
+                        <div class="story-card-overlay"></div>
+                        <div class="story-card-content">
+                            <span class="story-label">Memory Archive 03</span>
+                            <h2>AFTER THE STREETLIGHTS WAKE UP</h2>
+                            <p>“The city changes once the music starts breathing.”</p>
+                            <button class="play-memory-btn">▶ ENTER THE NIGHT</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Art Gallery Experience -->
+        <div class="gallery-experience" id="gallery-ui">
+            <button class="close-gallery">CLOSE GALLERY</button>
+            <div class="gallery-header">
+                <h2>HARARE ART GALLERY</h2>
+                <p>“Art carries what cities cannot say aloud.”</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="art-piece" style="--drift: 1;">
+                    <div class="art-frame">
+                        <img src="https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/Zimbabwe-tourism/Harare/Harare_Art_Gallery_Cover.webp" alt="Memory Canvas">
+                    </div>
+                    <div class="art-info">
+                        <h3>CURATED SILENCE</h3>
+                        <span>Canvas 01</span>
+                    </div>
+                </div>
+                <div class="art-piece" style="--drift: -1;">
+                    <div class="art-frame">
+                        <img src="https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/Zimbabwe-tourism/Harare/Stories_About_Harare_Cover.webp" alt="Memory Canvas">
+                    </div>
+                    <div class="art-info">
+                        <h3>STORYTELLER</h3>
+                        <span>Canvas 02</span>
+                    </div>
+                </div>
+                <div class="art-piece" style="--drift: 0.5;">
+                    <div class="art-frame">
+                        <img src="https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/Zimbabwe-tourism/Harare/Enter_Harare_Cover_Optimized.webp" alt="Memory Canvas">
+                    </div>
+                    <div class="art-info">
+                        <h3>URBAN RHYTHM</h3>
+                        <span>Canvas 03</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Neon Sweep Element -->
+        <div class="neon-sweep"></div>
+
+        <!-- Story Reveal Layer -->
+        <div class="story-overlay">
+            <button class="close-story">CLOSE PORTAL</button>
+            <div class="story-content">
+                <h2>CHAPTER TITLE</h2>
+                <p>Editorial cinematic content goes here...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cinematic Locked Feedback Overlay -->
+    <div class="locked-feedback-overlay" id="locked-feedback">
+        <div class="feedback-card">
+            <button class="close-feedback" aria-label="Dismiss">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <div class="feedback-glow"></div>
+            <div class="feedback-content">
+                <span class="feedback-category" id="feedback-cat">EVOLVING SYSTEM</span>
+                <h4 class="feedback-title" id="feedback-title">HARARE MEMORIES</h4>
+                <p class="feedback-message" id="feedback-desc">The city is still gathering its memories...</p>
+                <div class="feedback-spinner">
+                    <span class="spinner-line"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/audio.js"></script>
+    <script src="../js/harare.js"></script>
+</body>
+</html>

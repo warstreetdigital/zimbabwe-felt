@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nyanga Today | Zimbabwe: Felt</title>
+    <!-- Core layout links -->
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/nyanga-today.css">
+</head>
+<body>
+    <!-- Premium Interactive Header -->
+    <header class="today-header">
+        <a href="nyanga.html" class="back-btn-modern" id="back-btn">
+            <span class="circle-arrow">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            </span>
+            <span>Return to the Mist</span>
+        </a>
+
+        <!-- Modern Audio toggler aligned with daylight premium vibe -->
+        <button class="audio-toggle" onclick="toggleZimMute()" id="audio-btn" style="background: rgba(255, 255, 255, 0.4); border: 1px solid rgba(15, 23, 42, 0.15); color: #0f172a; border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.5s ease; backdrop-filter: blur(10px);">
+            <span id="audio-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></span>
+        </button>
+    </header>
+
+    <!-- Fullscreen Media Viewer -->
+    <main class="today-viewer" id="viewer-layer">
+        <!-- Interactive images dynamically injected by JS and kept in slow continuous organic drifts -->
+    </main>
+
+    <!-- Daylight Atmospheric Overlays (Subtle, Airy) -->
+    <div class="today-vignette"></div>
+    <div class="today-overlay-light"></div>
+    <div class="sun-breath"></div>
+    <div class="today-cloud-dust"></div>
+
+    <!-- Editorial Text Presentation -->
+    <section class="today-content-frame">
+        <div class="meta-index" id="current-index">01 / 04</div>
+        <div class="today-title-wrapper">
+            <h1 class="today-title" id="today-title">WHERE THE CLOUDS REST</h1>
+        </div>
+        <div class="today-subtitle-wrapper">
+            <p class="today-subtitle" id="today-subtitle">Living amongst the winds, where heaven meets the high green ridges of Zimbabwe.</p>
+        </div>
+    </section>
+
+    <!-- Interactive Controls Layer: Slide dots and micro-arrows -->
+    <section class="today-controls">
+        <div class="slide-dots" id="slide-dots">
+            <!-- Interlocking indicator dots injected by JS -->
+        </div>
+
+        <nav class="arrow-nav">
+            <button class="arrow-btn" id="prev-btn" aria-label="Previous Slide">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            </button>
+            <button class="arrow-btn" id="next-btn" aria-label="Next Slide">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+        </nav>
+    </section>
+
+    <!-- Dynamic Paced Progress indicator -->
+    <div class="today-progress-container">
+        <div class="today-progress-bar" id="progress-bar"></div>
+    </div>
+
+    <!-- Immersive Dark Transition Cover to return to the Sacred Mist -->
+    <div class="reveal-mist-cover" id="mist-cover"></div>
+
+    <!-- Interactive Logic scripts -->
+    <script src="../js/audio.js"></script>
+    <script src="../js/nyanga-today.js"></script>
+</body>
+</html>

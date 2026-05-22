@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victoria Falls | Zimbabwe: Felt</title>
+    <link class="main-link" rel="stylesheet" href="../css/global.css">
+    <link class="sub-link" rel="stylesheet" href="../css/victoria-falls.css">
+</head>
+<body>
+    <!-- Persistent Back Nav -->
+    <a href="../home.html" class="back-nav" style="position: fixed; top: 2rem; left: 2rem; z-index: 1000; display: flex; align-items: center; gap: 1rem; text-decoration: none; color: white;">
+        <div style="width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(10px); background: rgba(0,0,0,0.2);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        </div>
+    </a>
+
+    <!-- Header for Shared Audio UI -->
+    <header class="global-header" style="justify-content: flex-end;">
+        <button class="audio-toggle" onclick="toggleZimMute()" id="audio-btn">
+            <span id="audio-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></span>
+        </button>
+    </header>
+
+    <div class="snap-container">
+        <!-- SECTION 1: CINEMATIC HERO -->
+        <section class="section-full hero-immersive is-active">
+            <img src="https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/Zimbabwe-tourism/Home-page/victoria-falls.jpg" alt="Victoria Falls Hero" class="bg-image hero-parallax">
+            <div class="overlay-dark" style="background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);"></div>
+            <div class="cinematic-vignette"></div>
+            
+            <div class="mist-layer"></div>
+            <div class="falling-mist"></div>
+            <div class="falls-mist atmospheric-particle" style="opacity: 0.8;"></div>
+            
+            <div class="section-content editorial-content">
+                <span class="label-gold" style="margin-bottom: 0.75rem; display: block; letter-spacing: 0.4em; font-weight: 500;">YOU ARE NOW INSIDE</span>
+                <h1 class="title-main font-serif" style="text-shadow: 0 4px 20px rgba(0,0,0,0.6);">ENTERING MOSI-OA-TUNYA</h1>
+                <p class="subtitle-emo" style="font-weight: 300; letter-spacing: 0.05em;">“The Falls are already speaking.”</p>
+            </div>
+
+            <!-- Elegant modern scroll indicator -->
+            <div class="scroll-hint-wrapper">
+                <span class="scroll-hint-text">SCROLL TO DISCOVER</span>
+                <div class="scroll-hint-line"></div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: EMOTIONAL STORY -->
+        <section class="section-full falls-story-section">
+            <div style="position: absolute; inset: 0; background: #080808;"></div>
+            <div class="section-content content-container" style="max-width: 700px;">
+                <p class="label-gold" style="margin-top: 2rem;">DAWN IN THE MIST</p>
+                <h2 class="font-serif italic" style="font-size: 2.2rem; color: white; line-height: 1.5; margin-bottom: 2rem;">
+                    “Before you see the water, <br>
+                    you hear the earth breathing.”
+                </h2>
+                <div style="height: 1px; width: 40px; background: var(--color-gold); margin: 0 auto 2.5rem auto;"></div>
+                <p style="font-size: 1.1rem; line-height: 2; font-weight: 300; color: rgba(255,255,255,0.7);">
+                    Mist rises like ghosts from the gorge, meeting the golden light of the Zambezi sun. In the heart of the thunder, time dissolves. This is where nature speaks with the authority of the ancient world.
+                </p>
+            </div>
+        </section>
+
+        <!-- SECTION 3: CINEMATIC AUTO-SLIDESHOW -->
+        <section class="section-full" style="padding: 0;">
+            <div class="cinematic-slideshow">
+                <div class="slideshow-track">
+                    <!-- Slide 1 -->
+                    <div class="slide is-active">
+                        <img src="https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/Zimbabwe-tourism/victoria-falls-gallery/victoria-falls-01.jpg" class="slide-bg">
+                        <div class="overlay-dark" style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);"></div>
+                        
+                        <!-- Interactive Discovery -->
+                        <div class="discovery-marker" style="top: 20%; left: 15%; right: auto;">
+                            <div class="marker-icon">+</div>
+                        </div>
+                        <div class="discovery-fact" style="left: 15%; right: auto; transform: translateX(-20px);">
+                            <span class="fact-title">Ancient Name</span>
+                            <p class="fact-body">Mosi-oa-Tunya translates to 'The Smoke that Thunders' in the local Lozi language.</p>
+                        </div>
+
+                        <div class="slide-caption">
+                            <span class="caption-line">“The thunder arrives before the water.”</span>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="slide">
+                        <img src="https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/Zimbabwe-tourism/victoria-falls-gallery/victoria-falls-02.jpg" class="slide-bg">
+                        <div class="overlay-dark" style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);"></div>
+                        
+                        <!-- Interactive Discovery -->
+                        <div class="discovery-marker">
+                            <div class="marker-icon">+</div>
+                        </div>
+                        <div class="discovery-fact">
+                            <span class="fact-title">Did you know?</span>
+                            <p class="fact-body">Victoria Falls is classified as the largest waterfall in the world based on its combined width of 1,708 meters and height of 108 meters.</p>
+                        </div>
+
+                        <div class="slide-caption">
+                            <span class="caption-line">“Mist rises like memory into the sky.”</span>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="slide">
+                        <img src="https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/Zimbabwe-tourism/victoria-falls-gallery/victoria-falls-03.jpg" class="slide-bg">
+                        <div class="overlay-dark" style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);"></div>
+                        
+                        <!-- Interactive Discovery -->
+                        <div class="discovery-marker" style="top: auto; bottom: 30%; right: 25%;">
+                            <div class="marker-icon">+</div>
+                        </div>
+                        <div class="discovery-fact" style="top: auto; bottom: 35%; right: 25%;">
+                            <span class="fact-title">Celestial Magic</span>
+                            <p class="fact-body">During a full moon, Victoria Falls is one of the few places on earth where you can witness a rare 'Lunar Rainbow' or Moonbow.</p>
+                        </div>
+
+                        <div class="slide-caption">
+                            <span class="caption-line">“Some journeys are felt before they are understood.”</span>
+                        </div>
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="slide">
+                        <img src="https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/Zimbabwe-tourism/victoria-falls-gallery/victoria-falls-04.jpg" class="slide-bg">
+                        <div class="overlay-dark" style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);"></div>
+                        
+                        <!-- Interactive Discovery -->
+                        <div class="discovery-marker" style="top: 25%; right: 40%;">
+                            <div class="marker-icon">+</div>
+                        </div>
+                        <div class="discovery-fact" style="right: 35%;">
+                            <span class="fact-title">Local Spirit</span>
+                            <p class="fact-body">The local Tonga people believe the river god Nyami Nyami lives under the water, protecting the Zambezi valley.</p>
+                        </div>
+
+                        <div class="slide-caption">
+                            <span class="caption-line">“The earth speaks here in vibration and water.”</span>
+                        </div>
+                    </div>
+                    <!-- Slide 5 -->
+                    <div class="slide">
+                        <img src="https://pub-e10a28ca38cf452da437555e0f90e288.r2.dev/Zimbabwe-tourism/victoria-falls-gallery/victoria-falls-05.jpg" class="slide-bg">
+                        <div class="overlay-dark" style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);"></div>
+                        <div class="slide-caption">
+                            <span class="caption-line">“Victoria Falls is not visited. <br> It is experienced.”</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slideshow Navigation -->
+                <div class="slideshow-nav">
+                    <div class="nav-dot is-active"></div>
+                    <div class="nav-dot"></div>
+                    <div class="nav-dot"></div>
+                    <div class="nav-dot"></div>
+                    <div class="nav-dot"></div>
+                </div>
+
+                <!-- Slideshow Progress Bar -->
+                <div class="slideshow-progress">
+                    <div class="progress-bar" id="slideshow-progress-bar"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: ORAL STORY EXPERIENCE -->
+        <section class="section-full">
+            <div class="oral-history-container">
+                <div class="section-content">
+                    <div class="story-circle" id="play-story-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    </div>
+                    <span class="label-gold" style="display: block; margin-bottom: 1rem;">The Voice of Memory</span>
+                    <h2 class="title-main" style="font-size: 2.5rem;">Oral History</h2>
+                    <p style="opacity: 0.5; max-width: 400px; margin: 2rem auto; font-style: italic;">“Water has a memory. Listen to what it tells you about the people who first walked these shores.”</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: HIDDEN DISCOVERY -->
+        <section class="section-full discovery-section">
+            <div class="discovery-glow"></div>
+            <div class="section-content">
+                <p class="label-gold">REVEALED IN THE SHADOWS</p>
+                <div style="height: 100px;"></div>
+                <p class="discovery-text">MOSI-OA-TUNYA</p>
+                <h3 class="font-serif italic" style="font-size: 1.5rem; margin-top: 2rem; color: white; opacity: 0.6;">The Smoke That Thunders</h3>
+            </div>
+        </section>
+
+        <!-- SECTION 6: EXIT TRANSITION -->
+        <section class="section-full" style="background: #000;">
+            <div class="cinematic-vignette"></div>
+            <div class="section-content content-container">
+                <div style="width: 1px; height: 100px; background: var(--color-gold); margin: 0 auto 3rem auto; opacity: 0.3;"></div>
+                <h2 class="font-serif italic" style="font-size: 2.5rem; margin-bottom: 2rem;">The River Flows On</h2>
+                <p class="label-gold" style="margin-bottom: 5rem;">One Chapter Ends, Another Begins</p>
+                <a href="../home.html" class="btn-gold">Return to the Journey</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/audio.js"></script>
+    <script src="../js/scenes.js"></script>
+    <script src="../js/victoria-falls.js"></script>
+</body>
+</html>
