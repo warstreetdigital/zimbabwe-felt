@@ -24,6 +24,52 @@ body {
 }
 
 /* Atmospheric Layered Backgrounds */
+.visuals-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: #000;
+}
+
+.auras-container, .images-container {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.visual-aura {
+    position: absolute;
+    inset: -15%;
+    width: 130%;
+    height: 130%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 6s ease-in-out;
+    filter: blur(40px) saturate(0.4) brightness(0.25) sepia(0.25);
+}
+
+.visual-aura.active {
+    opacity: 0.72;
+}
+
+.visual-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity 6s cubic-bezier(0.25, 1, 0.4, 1);
+    filter: saturate(0.65) contrast(1.15) brightness(0.8) sepia(0.18);
+}
+
+.visual-image.active {
+    opacity: 0.95;
+}
+
 .gz-bg-layer {
     position: fixed;
     inset: 0;
@@ -38,7 +84,7 @@ body {
     height: 100%;
     object-fit: cover;
     opacity: 0;
-    transition: opacity 12s cubic-bezier(0.25, 1, 0.4, 1);
+    transition: opacity 6s cubic-bezier(0.25, 1, 0.4, 1);
     filter: saturate(0.55) contrast(1.1) brightness(0.72) sepia(0.22);
 }
 
@@ -47,19 +93,19 @@ body {
 }
 
 /* 4 Unique Continuous Cinematic Drifts (Never Stop) */
-.gz-image:nth-of-type(4n+1) {
+.visual-image:nth-of-type(4n+1), .visual-aura:nth-of-type(4n+1), .gz-image:nth-of-type(4n+1) {
     animation: gzDriftOne 32s cubic-bezier(0.2, 0.4, 0.3, 0.9) infinite alternate both;
 }
 
-.gz-image:nth-of-type(4n+2) {
+.visual-image:nth-of-type(4n+2), .visual-aura:nth-of-type(4n+2), .gz-image:nth-of-type(4n+2) {
     animation: gzDriftTwo 36s cubic-bezier(0.2, 0.4, 0.3, 0.9) infinite alternate both;
 }
 
-.gz-image:nth-of-type(4n+3) {
+.visual-image:nth-of-type(4n+3), .visual-aura:nth-of-type(4n+3), .gz-image:nth-of-type(4n+3) {
     animation: gzDriftThree 30s cubic-bezier(0.2, 0.4, 0.3, 0.9) infinite alternate both;
 }
 
-.gz-image:nth-of-type(4n+4) {
+.visual-image:nth-of-type(4n+4), .visual-aura:nth-of-type(4n+4), .gz-image:nth-of-type(4n+4) {
     animation: gzDriftFour 40s cubic-bezier(0.2, 0.4, 0.3, 0.9) infinite alternate both;
 }
 
@@ -251,21 +297,89 @@ body {
     mix-blend-mode: overlay;
 }
 
-/* Start Button */
+/* Start Button & Top Cinematic Controls Bar */
+.gz-top-controls {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: max(1.25rem, env(safe-area-inset-top)) 1rem 1rem;
+    pointer-events: none;
+    width: 100%;
+}
+
+.gz-top-controls .back-nav-modern,
+.inzwa-ngano-wrapper,
+.gz-top-controls .audio-toggle {
+    pointer-events: auto;
+}
+
+/* Back Button modern styles */
+.back-nav-modern {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), color 0.5s ease;
+}
+
+.back-nav-modern:hover {
+    color: var(--gz-primary);
+    transform: scale(1.05);
+}
+
+.nav-circle {
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(12px);
+    background: rgba(0, 0, 0, 0.4);
+    transition: border-color 0.5s ease, background 0.5s ease;
+}
+
+.back-nav-modern:hover .nav-circle {
+    border-color: var(--gz-primary);
+    background: rgba(0, 0, 0, 0.6);
+}
+
+/* True viewport fixed centering of the button in the screen's center */
+.inzwa-ngano-wrapper {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    z-index: 1001;
+    pointer-events: auto;
+}
+
 .inzwa-ngano-btn {
     position: relative;
     z-index: 20;
-    background: transparent;
+    background: rgba(0, 0, 0, 0.4);
     border: 1px solid var(--gz-primary);
     color: var(--gz-primary);
-    padding: 1.5rem 4rem;
+    padding: 0.9rem 2rem;
     font-family: var(--font-display);
-    font-size: 0.8rem;
-    letter-spacing: 0.5em;
+    font-size: 0.72rem;
+    letter-spacing: 0.35em;
     cursor: pointer;
     transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     backdrop-filter: blur(10px);
     overflow: hidden;
+    white-space: nowrap;
+    text-transform: uppercase;
 }
 
 .inzwa-ngano-btn::before {
@@ -289,7 +403,24 @@ body {
 .inzwa-ngano-btn.fade-out {
     opacity: 0;
     pointer-events: none;
-    transform: translateY(20px);
+    transform: translateY(15px);
+}
+
+@media (min-width: 768px) {
+    .gz-top-controls {
+        padding: max(1.75rem, env(safe-area-inset-top)) 2rem 1.5rem;
+    }
+    
+    .inzwa-ngano-btn {
+        padding: 1.25rem 3.5rem;
+        font-size: 0.8rem;
+        letter-spacing: 0.5em;
+    }
+    
+    .inzwa-ngano-wrapper {
+        top: 50%;
+        margin: 0;
+    }
 }
 
 /* Ngano UI */
